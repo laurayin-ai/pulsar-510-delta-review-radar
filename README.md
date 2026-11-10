@@ -10,7 +10,7 @@ Refresh the official Judge.me review data and rebuild the page:
 node scripts/build-radar.mjs
 ```
 
-The authoritative internal-to-customer mapping contains 12 families: D-026A / CORE 510 Battery, D-176 / SeshGear, D-173 / Delta SMART BOX, G-069 / SYNDR, G-077 / DL wax box, G-103 / Chorus, G-132 / Dabtron 2.0, G-151 / Delta 3-in-1, D-148A / DL 6.0, D-153 / Hall Pass, D-170 / Relay, and G-158 / Voyager. Only unique, publicly verifiable Pulsar Shop matches are included in the live product filter; ambiguous or not-yet-listed models remain monitoring targets.
+The authoritative internal-to-customer mapping contains 12 families: D-026A / CORE 510 Battery, D-176 / 510 Daily, D-173 / Delta SMART BOX, G-069 / SYNDR, G-077 / DL wax box, G-103 / Chorus, G-132 / Dabtron 2.0, G-151 / Delta 3-in-1, D-148A / DL 6.0, D-153 / Hall Pass, D-170 / Relay, and G-158 / Voyager. Only unique, publicly verifiable Pulsar Shop matches are included in the live product filter; ambiguous or not-yet-listed models remain monitoring targets.
 
 Data boundaries:
 

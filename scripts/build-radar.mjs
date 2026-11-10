@@ -72,6 +72,15 @@ const products = [
     aliases: ["Dabtron 2.0"],
   },
   {
+    key: "510-daily",
+    internalCode: "D-176",
+    model: "510 Daily",
+    title: "SeshGear 510 Daily Auto-Draw Vape Bar",
+    productId: "8409116115059",
+    handle: "seshgear-510-daily-vape-bar",
+    aliases: ["510 Daily", "SeshGear 510 Daily"],
+  },
+  {
     key: "relay",
     internalCode: "D-170",
     model: "Relay",
@@ -93,7 +102,6 @@ const products = [
 
 const monitoring = [
   { internalCode: "D-026A", model: "CORE 510 Battery", aliases: ["D-026A", "CORE 510 Battery"] },
-  { internalCode: "D-176", model: "SeshGear", aliases: ["D-176", "SeshGear"] },
   { internalCode: "D-173", model: "Delta SMART BOX", aliases: ["D-173", "Delta SMART BOX"] },
 ];
 
