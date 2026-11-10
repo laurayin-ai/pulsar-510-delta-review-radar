@@ -1,0 +1,3 @@
+.netlify/
+*.tar.gz
+.DS_Store
