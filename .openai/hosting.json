@@ -1,0 +1,10 @@
+{
+  "static": {
+    "directory": "dist"
+  },
+  "project_id": "appgprj_6af321caab2081919fa0b9c74cec23cb",
+  "artifact_metadata": {
+    "producer": "data-analytics",
+    "surface": "dashboard"
+  }
+}

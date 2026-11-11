@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="面向产品、研发、品质、业务、供应链、制造与包装团队的 Pulsar 用户体验、产品改善与创新协作看板。">
+  <title>Pulsar 用户体验与产品创新协作看板</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <div class="brand-block">
+      <span class="brand-mark" aria-hidden="true">PX</span>
+      <div><strong>Pulsar OEM Experience Lab</strong><span>用户体验 · 产品改善 · 创新协作</span></div>
+    </div>
+    <div class="freshness"><span id="sourceState" class="state-pill">数据读取中</span><span id="generatedAt"></span></div>
+  </header>
+
+  <nav class="view-nav" aria-label="主要视图">
+    <button class="view-tab active" data-view="focus">本周重点</button>
+    <button class="view-tab" data-view="experience">产品体验</button>
+    <button class="view-tab" data-view="improvement">产品改善</button>
+    <button class="view-tab" data-view="innovation">创新机会</button>
+    <button class="view-tab" data-view="archive">评论与证据档案</button>
+  </nav>
+
+  <aside class="local-notice" aria-label="协作记录保存说明">
+    <strong>协作记录保存范围</strong>
+    <span>状态、责任团队、负责人、截止时间、批次及备注仅保存在当前浏览器，不会上传或共享；清除浏览器数据会丢失。公开页面不显示其他人的内部记录。</span>
+    <button id="exportLocal" type="button">导出本地协作记录</button>
+  </aside>
+
+  <section class="filter-dock" aria-label="全局筛选">
+    <div class="filter-grid">
+      <label>型号<select id="productFilter"></select></label>
+      <label>产品类别<select id="categoryFilter"></select></label>
+      <label>星级<select id="ratingFilter"><option value="all">全部星级</option><option value="5">5星</option><option value="4">4星</option><option value="3">3星</option><option value="2">2星</option><option value="1">1星</option></select></label>
+      <label>时间范围<select id="timeFilter"><option value="all">全部时间</option><option value="30">近30天</option><option value="90">近90天</option><option value="365">近一年</option><option value="custom">自定义</option></select></label>
+      <label class="date-field">开始日期<input id="dateFrom" type="date"></label>
+      <label class="date-field">结束日期<input id="dateTo" type="date"></label>
+      <label class="search-field">关键词<input id="searchInput" type="search" placeholder="搜索型号、场景、部件或评论原文"></label>
+      <button id="resetFilters" class="quiet-button" type="button">清空筛选</button>
+    </div>
+    <div class="filter-summary"><span id="scopeText"></span><span id="resultText"></span></div>
+  </section>
+
+  <main id="main">
+    <section class="view active" data-view-panel="focus">
+      <div class="section-intro">
+        <div><span class="kicker">ACTION FIRST</span><h1>本周需要看什么、<br>验证什么、决定什么</h1></div>
+        <p>先处理安全和重复痛点，再看机会。所有数量均为公开评论中的“提及”，不是故障率。</p>
+      </div>
+      <div class="focus-grid">
+        <article class="focus-card change-card"><div class="focus-label">本次新增的重要反馈</div><div id="newFeedback"></div></article>
+        <article class="focus-card safety-card"><div class="focus-label">安全反馈优先复核</div><div id="safetyQueue"></div></article>
+        <article class="focus-card"><div class="focus-label">重复核心痛点与涉及型号</div><div id="recurringIssues"></div></article>
+        <article class="focus-card"><div class="focus-label">待验证、待决策与逾期任务</div><div id="taskQueue"></div></article>
+        <article class="focus-card"><div class="focus-label">值得验证的创新机会</div><div id="opportunityFocus"></div></article>
+      </div>
+      <section class="supporting-metrics" aria-label="辅助监测信息">
+        <div class="metric"><strong id="mFilteredCount">—</strong><span>当前筛选评论数</span><small>应用型号、类别、星级、时间及关键词</small></div>
+        <div class="metric"><strong id="mFilteredAverage">—</strong><span>当前筛选评论均值</span><small id="mFilteredScope">当前条件</small></div>
+        <div class="metric"><strong id="mModelAverage">—</strong><span>型号全量评论均值</span><small>仅跟随型号；不受星级、关键词和时间影响</small></div>
+        <div class="metric live"><strong id="mLiveAverage">读取中</strong><span id="mLiveLabel">客户官网当前评分</span><small id="mLiveMeta"></small></div>
+        <div class="metric"><strong id="mCoverage">—</strong><span>已确认上线型号</span><small>区分零评论、抓取失败与待确认</small></div>
+      </section>
+      <div class="boundary">证据边界：官网评论不代表销量、总体故障率或退货率；自动归类只形成待复核信号，不自动认定根因、缺陷或立项。</div>
+    </section>
+
+    <section class="view" data-view-panel="experience">
+      <div class="section-intro"><div><span class="kicker">USER JOURNEY</span><h1>产品体验</h1></div><p>星级与内容标签独立；高星评论中的痛点、换货、清洁困难和功能诉求同样进入分析。</p></div>
+      <div id="journeyBoard" class="journey-board"></div>
+      <div class="split-grid">
+        <section class="panel"><div class="panel-head"><h2>用户认可的价值</h2><span id="strengthDenominator"></span></div><div id="strengths"></div></section>
+        <section class="panel"><div class="panel-head"><h2>高星混合评价</h2><span>4–5星且同时包含问题或诉求</span></div><div id="mixedReviews"></div></section>
+      </div>
+    </section>
+
+    <section class="view" data-view-panel="improvement">
+      <div class="section-intro"><div><span class="kicker">EVIDENCE → VALIDATION</span><h1>产品改善问题卡</h1></div><p>多条评论可归并到同一问题，一条评论也可关联多个问题。关联可在本浏览器排除或恢复。</p></div>
+      <div class="issue-toolbar">
+        <label>问题类型<select id="issueTypeFilter"></select></label>
+        <label>涉及部件<select id="componentFilter"></select></label>
+        <label>处理状态<select id="issueStatusFilter"></select></label>
+        <label>责任团队<select id="teamFilter"></select></label>
+        <label>严重程度<select id="severityFilter"></select></label>
+        <button id="exportIssues" type="button">导出当前问题卡 CSV</button>
+      </div>
+      <div id="issueCards" class="issue-cards"></div>
+    </section>
+
+    <section class="view" data-view-panel="innovation">
+      <div class="section-intro"><div><span class="kicker">VALIDATE, NOT APPROVE</span><h1>创新机会</h1></div><p>机会来自用户已认可价值与未满足需求的组合；默认是待验证，不等于已批准立项。</p></div>
+      <div id="opportunityCards" class="opportunity-cards"></div>
+    </section>
+
+    <section class="view" data-view-panel="archive">
+      <div class="section-intro"><div><span class="kicker">TRACEABLE EVIDENCE</span><h1>评论与证据档案</h1></div><p>默认先看中文要点、关键原句、标签和关联问题；展开查看完整原文、用户、国家、头像及 UUID。</p></div>
+      <div id="emptyState" class="empty-state" hidden></div>
+      <div id="reviewList" class="review-list"></div>
+      <section class="coverage-section"><div class="panel-head"><h2>型号映射与数据状态</h2><span>每周复核 12 个内部型号</span></div><div id="modelCoverage" class="coverage-grid"></div></section>
+      <details class="method-panel"><summary>查看数据口径、来源与限制</summary><div id="methodContent"></div></details>
+    </section>
+  </main>
+
+  <dialog id="issueDialog" class="issue-dialog">
+    <button class="dialog-close" type="button" aria-label="关闭">关闭</button>
+    <div id="issueDialogContent"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script id="radar-data" type="application/json">__RADAR_DATA__</script>
+  <script src="./app.js"></script>
+</body>
+</html>
