@@ -16,5 +16,6 @@ Data boundaries:
 
 - Review volume is not treated as sales volume or defect rate.
 - Missing reviewer avatars remain missing; initials are displayed instead.
+- The selected product's customer-site score is refreshed from Judge.me in the browser; the all-model value is weighted by each model's public review count and falls back to the generated snapshot if live access fails.
 - User statements, analytical inference, and R&D verification recommendations are kept separate.
 - Model aliases and colors are deduplicated into a single public product family.
