@@ -1,5 +1,9 @@
 # Pulsar OEM Experience & Innovation Board
 
+## Three-model quality analysis
+
+[Open the bilingual quality report](https://laurayin-ai.github.io/pulsar-510-delta-review-radar/quality-analysis/) for G-069 SYNDR, G-151 Delta 3-in-1 and G-158 Voyager. Its refresh, translation and publishing instructions are in [quality-analysis/README.md](quality-analysis/README.md). The existing root dashboard remains available.
+
 Action-oriented user-experience, product-improvement and innovation collaboration board built from public Pulsar Shop reviews. It serves product, R&D, quality, sales, supply-chain, manufacturing and packaging discussions while keeping observed feedback, hypotheses and validated conclusions separate.
 
 The generated website is `dist/index.html`; supporting assets and an inspectable snapshot are written to `dist/`. GitHub Pages deployment is handled by `.github/workflows/pages.yml`.
